@@ -4,16 +4,16 @@ import { Noticia } from '../../model/noticia';
 import { Router } from '@angular/router';
 import { Mensajes } from '../../resources/mensajes';
 import { NoticiasService } from '../../services/noticias.service';
-import { CommonModule } from '@angular/common';
 import { SharedModules } from '../../shared.module';
 import { SliceConPuntosPipe } from '../../pipes/slice-con-puntos.pipe';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
+  standalone: true,
+  imports: [SharedModules, SliceConPuntosPipe, HttpClientModule], // Incluye HttpClientModule
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css',
-  standalone: true,
-  imports: [SharedModules, SliceConPuntosPipe]
+  styleUrl: './home.component.css'
 })
 export class HomeComponent extends BaseComponent implements OnInit {
 
@@ -25,7 +25,6 @@ export class HomeComponent extends BaseComponent implements OnInit {
     const scrollPosition = document.documentElement.scrollTop || document.body.scrollTop || 0;
     this.verCards(scrollPosition > 50);
   }
-
 
   title = Mensajes.TITULO_PANTALLA;
 
@@ -68,11 +67,10 @@ export class HomeComponent extends BaseComponent implements OnInit {
   private screenWidth: number | null = null;
   private screenHeight: number | null = null;
 
-  constructor(private router: Router, private renderer: Renderer2, private elementRef: ElementRef) {
+  constructor(private noticiasService: NoticiasService, private router: Router, private renderer: Renderer2, private elementRef: ElementRef,
+  ) {
     super();
   }
-
-
 
   ngOnInit(): void {
 
@@ -92,12 +90,14 @@ export class HomeComponent extends BaseComponent implements OnInit {
   }
 
   cargarNoticias() {
-
-    // this.noticiasService.obtenerNoticias().subscribe(
-    //   respuesta => {
-    //     this.noticias = respuesta;
-    //   }
-    // )
+    this.noticiasService.obtenerNoticias().subscribe(
+      (data) => {
+        this.noticias = data;
+      },
+      (error) => {
+        console.error('Error al obtener noticias:', error);
+      }
+    );
   }
 
   verCards(ver: boolean) {
@@ -116,8 +116,6 @@ export class HomeComponent extends BaseComponent implements OnInit {
       // }
     }
   }
-
-
 
   public scrollear(seccion: string, tipo: string) {
     if (tipo == 'scroll') {
@@ -142,4 +140,3 @@ export class HomeComponent extends BaseComponent implements OnInit {
     this.router.navigate([tipo]);
   }
 }
-
