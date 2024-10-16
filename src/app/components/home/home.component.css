@@ -1,0 +1,548 @@
+/* GENERAL */
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.titulo {
+  background-color: white;
+  text-align: center;
+  width: 20%;
+  margin-left: 40%;
+}
+
+.imagen-fondo-1,
+.imagen-fondo-2,
+.imagen-fondo-3 {
+  opacity: 0.65;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.largo1Pantalla {
+  height: 100vh;
+}
+
+.imagen-fondo-1 {
+  background-image: url("../../../assets/fondo-generico.jpg");
+}
+
+.imagen-fondo-2 {
+  background-image: url("../../../assets/fondo-generico2.jpg");
+}
+
+.imagen-fondo-3 {
+  background-image: url("../../../assets/img_parallax3.jpg");
+}
+
+/* GENERAL */
+/* ENCABEZADO */
+.logo-navbar {
+  width: 20%;
+}
+
+::ng-deep .p-toolbar-group-right .p-button,
+.tituloEstudio {
+  font-family: 'Trirong', serif;
+  color: #350468;
+  font-weight: lighter;
+}
+
+/* ENCABEZADO */
+/* INICIO */
+::ng-deep .card-solucion {
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  opacity: 0;
+  visibility: hidden;
+}
+
+  .card-solucion-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
+  }
+
+.frase1 {
+  text-align: center;
+  font-style: italic;
+  margin: 1.3em 0
+}
+
+.frase2{
+  font-style: italic; 
+  text-align:right; 
+  padding-right: 30em;
+}
+
+/* INICIO */
+/* NOSOTROS */
+.persona-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.presentacion {
+  width: 65%;
+  background-color: white;
+  padding: 0 3%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.foto-img {
+  border-radius: 10px;
+  width: 100%;
+}
+
+/* NOSOTROS */
+/* NOTICIAS */
+
+/* NOTICIAS */
+/* RESPONSIVE */
+
+/* 27 pulgadas */
+@media (max-width: 2200px) {
+
+  /* CABEZAL */
+  ::ng-deep .p-toolbar-group-right .p-button,
+  .tituloEstudio {
+    font-size: 22px;
+  }
+
+  ::ng-deep .boton-navbar-container {
+    width: 48%;
+  }
+
+  .logo-navbar {
+    width: 20%;
+  }
+
+  ::ng-deep .boton-navbar-container {
+    width: 42%;
+    gap: 7px;
+  }
+
+  ::ng-deep .p-button.p-button-lg {
+    padding: 1rem 1.5rem;
+  }
+  /* CABEZAL */
+  /* SOLUCIONES */
+  .card-solucion-container {
+    padding: 18% 0 0 25%;
+  }
+
+  ::ng-deep .card-solucion {
+    width: 18em;
+    height: 21em;
+    margin-right: 5em
+  }
+
+  ::ng-deep .card-solucion .p-card-content {
+    height: 11.4em;
+  }
+
+  ::ng-deep .card-solucion .p-card-content img {
+    width: 16em;
+    height: 11em;
+  }
+  /* SOLUCIONES */
+  /* NOSOTROS */
+  .foto {
+    width: 22.5%;
+  }
+
+  .nosotros-container {
+    font-size: 17px;
+    align-items: center;
+    gap: 10px;
+    margin: auto;
+    padding-top: 8.5%;
+    max-width: 85%;
+  }
+  /* NOSOTROS */
+  /* NOTICIA */
+  .card-noticia-container {
+    padding: 14% 0 0 8%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
+  }
+
+  ::ng-deep .card-noticia {
+    height: 32em;
+    width: 60%;
+    display: block;
+    box-sizing: border-box;
+  }
+
+  ::ng-deep .card-noticia .p-card-title {
+    font-size: 16px;
+    height: 4em;
+  }
+
+  ::ng-deep .card-noticia .p-card-content {
+    font-size: 13px;
+  }
+
+  ::ng-deep .card-noticia .p-card-content img {
+    width: 100%;
+    height: 100%;
+  }
+  /* NOTICIA */
+}
+
+/* Laptop grande */
+@media (max-width: 1600px) {
+
+  /* CABEZAL */
+  ::ng-deep .p-toolbar-group-right .p-button,
+  .tituloEstudio {
+    font-size: 22px;
+  }
+
+  .logo-navbar {
+    width: 20%;
+  }
+
+  ::ng-deep .boton-navbar-container {
+    width: 50%;
+    gap: 25px;
+  }
+
+  ::ng-deep .p-button.p-button-lg {
+    padding: 0.1rem 0.7rem;
+  }
+  /* CABEZAL */
+  /* SOLUCIONES */
+  .card-solucion-container {
+    padding: 18% 0 0 25%;
+  }
+
+  ::ng-deep .card-solucion {
+    width: 18em;
+    height: 21em;
+    margin-right: 5em
+  }
+
+  ::ng-deep .card-solucion .p-card-content {
+    height: 11.4em;
+  }
+
+  ::ng-deep .card-solucion .p-card-content img {
+    width: 16em;
+    height: 11em;
+  }
+  /* SOLUCIONES */
+  /* NOSOTROS */
+  .foto {
+    width: 22.5%;
+  }
+
+  .nosotros-container {
+    font-size: 16px;
+    align-items: center;
+    gap: 10px;
+    padding: 6.5% auto;
+    /* max-width: 85%; */
+  }
+  /* NOSOTROS */
+  /* NOTICIA */
+  .card-noticia-container {
+    padding: 8.7% 0 0 8%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
+  }
+
+  ::ng-deep .card-noticia {
+    height: 100%;
+    width: 75%;
+    display: block;
+    box-sizing: border-box;
+  }
+
+  ::ng-deep .card-noticia .p-card-title {
+    font-size: 15px;
+  }
+
+  ::ng-deep .card-noticia .p-card-content {
+    font-size: 13px;
+  }
+
+  ::ng-deep .card-noticia .p-card-content img {
+    width: 100%;
+    height: 100%;
+  }
+  /* NOTICIA */
+}
+
+/* Laptop mediana */
+@media (max-width: 1440px) {
+
+  /* CABEZAL */
+  ::ng-deep .p-toolbar-group-right .p-button,
+  .tituloEstudio {
+    font-size: 17px;
+  }
+
+  ::ng-deep .boton-navbar-container {
+    width: 48%;
+  }
+
+  .logo-navbar {
+    width: 19%;
+  }
+
+  ::ng-deep .boton-navbar-container {
+    width: 42%;
+    gap: 0px;
+  }
+
+  ::ng-deep .p-button.p-button-lg {
+    padding: 0.1rem 0.7rem;
+  }
+  /* CABEZAL */
+  /* SOLUCIONES */
+  .card-solucion-container {
+    padding: 18% 0 0 25%;
+  }
+
+  ::ng-deep .card-solucion {
+    width: 18em;
+    height: 21em;
+    margin-right: 5em
+  }
+
+  ::ng-deep .card-solucion .p-card-content {
+    height: 11.4em;
+  }
+
+  ::ng-deep .card-solucion .p-card-content img {
+    width: 16em;
+    height: 11em;
+  }
+  /* SOLUCIONES */
+  /* NOSOTROS */
+  .foto {
+    width: 22.5%;
+  }
+
+  .nosotros-container {
+    font-size: 13px;
+    align-items: center;
+    gap: 10px;
+    margin: 5.5% auto;
+    max-width: 85%;
+  }
+  /* NOSOTROS */
+  /* NOTICIA */
+  .card-noticia-container {
+    padding: 8.7% 0 0 8%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
+  }
+
+  ::ng-deep .card-noticia {
+    height: 100%;
+    width: 75%;
+    display: block;
+    box-sizing: border-box;
+  }
+
+  ::ng-deep .card-noticia .p-card-title {
+    font-size: 15px;
+  }
+
+  ::ng-deep .card-noticia .p-card-content {
+    font-size: 13px;
+  }
+
+  ::ng-deep .card-noticia .p-card-content img {
+    width: 100%;
+    height: 100%;
+  }
+  /* NOTICIA */
+}
+
+/* Laptop chica */
+@media (max-width: 1280px) {
+
+  /* CABEZAL */
+  ::ng-deep .p-toolbar-group-right .p-button,
+  .tituloEstudio {
+    font-size: 19px;
+  }
+
+  ::ng-deep .boton-navbar-container {
+    width: 48%;
+  }
+
+  .logo-navbar {
+    width: 19%;
+  }
+
+  ::ng-deep .boton-navbar-container {
+    width: 42%;
+    gap: 0px;
+  }
+
+  ::ng-deep .p-button.p-button-lg {
+    padding: 0.1rem 0.7rem;
+  }
+  /* CABEZAL */
+  /* SOLUCIONES */
+  .card-solucion-container {
+    padding: 18% 0 0 25%;
+  }
+
+  ::ng-deep .card-solucion {
+    width: 18em;
+    height: 21em;
+    margin-right: 5em
+  }
+
+  ::ng-deep .card-solucion .p-card-content {
+    height: 11.4em;
+  }
+
+  ::ng-deep .card-solucion .p-card-content img {
+    width: 16em;
+    height: 11em;
+  }
+  /* SOLUCIONES */
+  .foto {
+    width: 22.5%;
+  }
+
+  .nosotros-container {
+    font-size: 13px;
+    align-items: center;
+    gap: 10px;
+    margin: 5.5% auto;
+    max-width: 85%;
+  }
+
+  .card-noticia-container {
+    padding: 8.7% 0 0 8%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
+  }
+
+  ::ng-deep .card-noticia {
+    height: 100%;
+    width: 75%;
+    display: block;
+    box-sizing: border-box;
+  }
+
+  ::ng-deep .card-noticia .p-card-title {
+    font-size: 15px;
+  }
+
+  ::ng-deep .card-noticia .p-card-content {
+    font-size: 13px;
+  }
+
+  ::ng-deep .card-noticia .p-card-content img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/* Tablet */
+@media (max-width: 1000px) {
+
+  ::ng-deep .p-toolbar-group-right .p-button {
+    font-size: 17px;
+  }
+
+  ::ng-deep .boton-navbar-container {
+    width: 50%;
+    margin-right: 2%;
+    gap: 0px;
+  }
+
+  ::ng-deep .p-button.p-button-lg {
+    padding: 0.1rem 0.7rem;
+  }
+
+  .logo-navbar {
+    width: 16%;
+  }
+
+  .card-solucion-container {
+    padding: 20% 0 0 18%;
+  }
+
+  ::ng-deep .p-card {
+    width: 15em;
+    height: 18.5em;
+    margin-right: 5em
+  }
+
+  ::ng-deep .p-card .p-card-content {
+    height: 9.2em;
+  }
+
+  ::ng-deep .p-card .p-card-content img {
+    width: 13em;
+    height: 9em;
+  }
+
+  .foto {
+    width: 26%;
+  }
+
+  .nosotros-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin: 6.5% auto;
+    max-width: 80%;
+  }
+
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .imagen-fondo-1 {
+    background-image: url("../../../assets/fondo-generico-cel.jpg");
+  }
+
+  ::ng-deep .p-toolbar-group-right .p-button,
+  .tituloEstudio {
+    font-size: 12px;
+  }
+
+  ::ng-deep .boton-navbar-container {
+    width: 50%;
+    margin-right: 5%;
+    gap: 0px;
+  }
+
+  ::ng-deep .p-button.p-button-lg {
+    padding: 0.1rem 0.7rem;
+  }
+
+  .logo-navbar {
+    width: 16%;
+  }
+
+  .card-solucion-container {
+    padding: 45% 0 0 18%;
+  }
+
+  ::ng-deep .card-solucion {
+    width: 20%;
+    height: 30%;
+    display: inline-block;
+  }
+
+  .card-solucion-container {
+    padding: 30% 0 0 21%;
+    justify-content: left;
+    overflow: hidden;
+  }
+
+}
