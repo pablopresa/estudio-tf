@@ -6,13 +6,18 @@ import { environment } from '../resources/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class NoticiasService {
+export class MensajesService {
 
-  apiUrl = environment.apiUrl + 'noticias';
+  apiUrl = environment.apiUrl + 'mensajes';
 
   constructor(private http: HttpClient) { }
 
-  obtenerNoticias(): Observable<any> {
+  obtenerMensajes(): Observable<any> {
     return this.http.get<any>(this.apiUrl);
   }
+
+  obtenerBotones(): Observable<any> {
+    return this.http.get<any>(this.apiUrl + '/botones');
+  }
+
 }

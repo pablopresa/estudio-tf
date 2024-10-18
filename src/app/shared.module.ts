@@ -10,13 +10,14 @@ import { ImageCardComponent } from './components/image-card/image-card.component
 import { InputTextModule } from 'primeng/inputtext';
 import { HttpClientModule } from '@angular/common/http';
 import { NoticiasService } from './services/noticias.service';
+import { MensajesService } from './services/mensajes.service';
 
 @NgModule({
   declarations: [],
   imports: [RouterOutlet, ImageCardComponent, HttpClientModule],
   exports: [CommonModule, ButtonModule, RouterOutlet, ToolbarModule, AvatarModule, ImageModule,
     CardModule, ImageCardComponent, InputTextModule, HttpClientModule],
-    providers:[NoticiasService]
+    providers:[NoticiasService, MensajesService]
 })
 export class SharedModules { }
 

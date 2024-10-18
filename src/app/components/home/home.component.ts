@@ -7,6 +7,11 @@ import { NoticiasService } from '../../services/noticias.service';
 import { SharedModules } from '../../shared.module';
 import { SliceConPuntosPipe } from '../../pipes/slice-con-puntos.pipe';
 import { HttpClientModule } from '@angular/common/http';
+import { MensajesService } from '../../services/mensajes.service';
+import { Mensaje } from '../../model/mensaje';
+import { Utiles } from '../../resources/utiles';
+import { Boton } from '../../model/boton';
+import { Observable, firstValueFrom } from 'rxjs';
 
 @Component({
   standalone: true,
@@ -40,41 +45,22 @@ export class HomeComponent extends BaseComponent implements OnInit {
   public frase2: string = Mensajes.FRASE_STEVE_JOBS2;
   public sobreNosotros: string = Mensajes.SOBRE_NOSOTROS;
   public estilosNavbar: any;
-  botones: any[] = [
-    { titulo: 'Inicio', valor: 'inicio', tipo: 'scroll' },
-    { titulo: 'Nosotros', valor: 'nosotros', tipo: 'scroll' },
-    { titulo: 'Noticias', valor: 'noticias', tipo: 'scroll' },
-    { titulo: 'Legal', valor: 'juridica', tipo: 'navegacion' },
-    { titulo: 'Contable', valor: 'contable', tipo: 'navegacion' },
-    { titulo: 'Contacto', valor: 'contacto', tipo: 'scroll' }
-  ];
+  public botones: Boton[] = [];
   public cantidadLetrasMostradasNoticia: number = 110;
-  public tituloFlo = 'Florencia Tassano Ferrés'
-  public descripcionFlo: string[] = [
-    'Hola! Soy Florencia, una mamá emprendedora de 31 años, con experiencia en Contabilidad y Recursos Humanos, me formé en la Universidad de la República del Uruguay.',
-    'Luego de varios años de administrar mi propio emprendimiento, decidí ofrecer asesoramiento a empresas y personas que lo necesiten, con el objetivo de seguir ganando experiencia y equilibrar mi vida laboral y familiar.',
-    'Mi objetivo es facilitar la vida de mis clientes ocupándome de las complejidades administrativas y contables, permitiéndoles enfocarse en el crecimiento y éxito de sus negocios.'
-  ];
 
-  public tituloJuli = 'Juliana Tassano Ferrés'
-  public descripcionJuli: string[] = [
-    'Hola, mi nombre es Juliana Tassano Ferrés, soy Abogada egresada de la Udelar. Me considero una apasionada del derecho.',
-    'Abrimos este nuevo espacio junto con mi hermana para poder tener más llegada a uds, y que a su vez uds tengan un espacio para poder obtener más herramientas legales y contables mediante los conocimientos y experiencias que iremos compartiendo.'
-  ];
+  public tituloFlo = '';
+  public descripcionFlo: string[] = [];
+  public tituloJuli = '';
+  public descripcionJuli: string[] = [];
+  public tituloCabezal = '';
 
-  public tituloCabezal: string = 'Estudio Tassano Ferrés';
-
-  private screenWidth: number | null = null;
-  private screenHeight: number | null = null;
-
-  constructor(private noticiasService: NoticiasService, private router: Router, private renderer: Renderer2, private elementRef: ElementRef,
-  ) {
+  constructor(private router: Router, private renderer: Renderer2, private elementRef: ElementRef,
+    private noticiasService: NoticiasService, private mensajesService: MensajesService) {
     super();
   }
 
   ngOnInit(): void {
 
-    this.verCards(true);
     const color1 = '#e6e6e6';
     const color2 = 'var(--orange-100)';
     this.estilosNavbar = {
@@ -86,18 +72,31 @@ export class HomeComponent extends BaseComponent implements OnInit {
       'z-index': 40
     };
 
-    this.cargarNoticias();
+    Promise.all([
+      this.cargarDatos(this.mensajesService.obtenerMensajes(), 'mensajes'),
+      this.cargarDatos(this.noticiasService.obtenerNoticias(), 'noticias'),
+      this.cargarDatos(this.mensajesService.obtenerBotones(), 'botones')
+    ]).then(([mensajes, noticias, botones]) => {
+
+      this.noticias = noticias;
+      this.botones = Utiles.ordenar(botones);
+      this.tituloFlo = Utiles.obtenerMensajes('presentacion-titulo-flo', mensajes)[0];
+      this.descripcionFlo = Utiles.obtenerMensajes('presentacion-descripcion-flo', mensajes);
+      this.tituloJuli = Utiles.obtenerMensajes('presentacion-titulo-juli', mensajes)[0];
+      this.descripcionJuli = Utiles.obtenerMensajes('presentacion-descripcion-juli', mensajes);
+      this.tituloCabezal = Utiles.obtenerMensajes('cabezal-titulo', mensajes)[0];
+    }).catch((error) => {
+      console.error('Error al cargar datos:', error);
+    });
   }
 
-  cargarNoticias() {
-    this.noticiasService.obtenerNoticias().subscribe(
-      (data) => {
-        this.noticias = data;
-      },
-      (error) => {
-        console.error('Error al obtener noticias:', error);
-      }
-    );
+  async cargarDatos<T>(observable: Observable<T>, nombreError: string): Promise<T> {
+    try {
+      return await firstValueFrom(observable);
+    } catch (error) {
+      console.error(`Error al obtener ${nombreError}:`, error);
+      throw error;
+    }
   }
 
   verCards(ver: boolean) {
@@ -107,13 +106,6 @@ export class HomeComponent extends BaseComponent implements OnInit {
         this.renderer.setStyle(card, 'opacity', ver ? '1' : '0');
         this.renderer.setStyle(card, 'visibility', ver ? 'visible' : 'hidden');
       })
-      // const botones = this.elementRef.nativeElement.querySelectorAll('.card-solucion-button');
-      // if (botones.length > 0) {
-      //   botones.forEach((boton: HTMLElement) => {
-      //     this.renderer.setStyle(boton, 'opacity', ver ? '1' : '0');
-      //     this.renderer.setStyle(boton, 'visibility', ver ? 'visible' : 'hidden');
-      //   });
-      // }
     }
   }
 
@@ -122,7 +114,6 @@ export class HomeComponent extends BaseComponent implements OnInit {
       const element = document.getElementById(seccion);
       const navbar = document.getElementById('navbar');
       if (element && navbar) {
-        const navbarHeight = navbar.offsetHeight;
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     }

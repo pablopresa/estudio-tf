@@ -81,7 +81,7 @@
     <div class="card-noticia-container">
         <div *ngFor="let noticia of noticias">
             <p-card header="{{noticia.titulo}}" styleClass="card-noticia">
-                <p-image alt="Card" src="{{noticia.linkFoto}}" styleClass="card-noticia-imagen"></p-image>
+                <p-image alt="Card" src="{{noticia.urlImagen}}" styleClass="card-noticia-imagen"></p-image>
                 <div></div>
                 <ng-template pTemplate="footer">
                     <p>
