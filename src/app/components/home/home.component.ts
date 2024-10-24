@@ -6,16 +6,17 @@ import { Mensajes } from '../../resources/mensajes';
 import { NoticiasService } from '../../services/noticias.service';
 import { SharedModules } from '../../shared.module';
 import { SliceConPuntosPipe } from '../../pipes/slice-con-puntos.pipe';
-import { HttpClientModule } from '@angular/common/http';
 import { MensajesService } from '../../services/mensajes.service';
-import { Mensaje } from '../../model/mensaje';
 import { Utiles } from '../../resources/utiles';
 import { Boton } from '../../model/boton';
-import { Observable, firstValueFrom } from 'rxjs';
+import { GlobalService } from '../../services/global.service';
+import { noticiasConf } from '../../resources/configuracion';
+import { AuthService } from '../../services/auth.service';
+import { Usuario } from '../../model/usuario';
 
 @Component({
   standalone: true,
-  imports: [SharedModules, SliceConPuntosPipe, HttpClientModule], // Incluye HttpClientModule
+  imports: [SharedModules, SliceConPuntosPipe], // Incluye HttpClientModule
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
@@ -46,20 +47,30 @@ export class HomeComponent extends BaseComponent implements OnInit {
   public sobreNosotros: string = Mensajes.SOBRE_NOSOTROS;
   public estilosNavbar: any;
   public botones: Boton[] = [];
-  public cantidadLetrasMostradasNoticia: number = 110;
+
+  public cantidadLetrasMostradasNoticia: number = 117
 
   public tituloFlo = '';
   public descripcionFlo: string[] = [];
   public tituloJuli = '';
   public descripcionJuli: string[] = [];
   public tituloCabezal = '';
+  private usuario: any = null;
 
-  constructor(private router: Router, private renderer: Renderer2, private elementRef: ElementRef,
-    private noticiasService: NoticiasService, private mensajesService: MensajesService) {
+  constructor(private authService: AuthService, private router: Router, private renderer: Renderer2,
+    private elementRef: ElementRef, private noticiasService: NoticiasService,
+    private mensajesService: MensajesService) {
     super();
   }
 
   ngOnInit(): void {
+
+    if(this.authService.isAuthenticated()){
+      this.usuario = new Usuario('','','','A');
+    }
+    else{
+      this.usuario = new Usuario('','','','U');
+    }
 
     const color1 = '#e6e6e6';
     const color2 = 'var(--orange-100)';
@@ -74,12 +85,14 @@ export class HomeComponent extends BaseComponent implements OnInit {
 
     Promise.all([
       this.cargarDatos(this.mensajesService.obtenerMensajes(), 'mensajes'),
-      this.cargarDatos(this.noticiasService.obtenerNoticias(), 'noticias'),
+      this.cargarDatos(this.noticiasService.obtenerNoticias(noticiasConf.cantidadNoticiasHome), 'noticias'),
       this.cargarDatos(this.mensajesService.obtenerBotones(), 'botones')
     ]).then(([mensajes, noticias, botones]) => {
 
       this.noticias = noticias;
-      this.botones = Utiles.ordenar(botones);
+      let botonesArray: Boton[] = botones;
+      botonesArray = botonesArray.filter(boton => boton.rol == this.usuario?.rol);
+      this.botones = Utiles.ordenarAscendente(botonesArray, 'orden');
       this.tituloFlo = Utiles.obtenerMensajes('presentacion-titulo-flo', mensajes)[0];
       this.descripcionFlo = Utiles.obtenerMensajes('presentacion-descripcion-flo', mensajes);
       this.tituloJuli = Utiles.obtenerMensajes('presentacion-titulo-juli', mensajes)[0];
@@ -88,15 +101,6 @@ export class HomeComponent extends BaseComponent implements OnInit {
     }).catch((error) => {
       console.error('Error al cargar datos:', error);
     });
-  }
-
-  async cargarDatos<T>(observable: Observable<T>, nombreError: string): Promise<T> {
-    try {
-      return await firstValueFrom(observable);
-    } catch (error) {
-      console.error(`Error al obtener ${nombreError}:`, error);
-      throw error;
-    }
   }
 
   verCards(ver: boolean) {
@@ -123,7 +127,6 @@ export class HomeComponent extends BaseComponent implements OnInit {
   }
 
   verNoticia(noticia: Noticia) {
-    console.log(noticia);
     this.router.navigate(['noticias'], { state: { data: noticia } });
   }
 

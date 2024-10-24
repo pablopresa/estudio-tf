@@ -1,0 +1,45 @@
+<p-card styleClass="card-crear-noticia" header="Crear Noticia">
+    <form (ngSubmit)="crear(noticiaForm)" #noticiaForm="ngForm" class="noticia-form">
+        <div class="p-field">
+            <label for="titulo">Título</label>
+            <input id="titulo" type="text" pInputText [(ngModel)]="titulo" name="titulo" required />
+            <small
+                *ngIf="noticiaForm.controls['titulo']?.invalid && (noticiaForm.controls['titulo']?.touched || noticiaForm.controls['titulo']?.dirty)"
+                class="error">
+                El título es obligatorio.
+            </small>
+        </div>
+
+        <div class="p-field">
+            <label for="contenido">Contenido</label>
+            <textarea id="contenido" rows="5" pInputTextarea [(ngModel)]="contenido" name="contenido"
+                required></textarea>
+            <small
+                *ngIf="noticiaForm.controls['contenido']?.invalid && (noticiaForm.controls['contenido']?.touched || noticiaForm.controls['contenido']?.dirty)"
+                class="error">
+                El contenido es obligatorio.
+            </small>
+        </div>
+
+        <div class="p-field">
+            <label>Imagen</label>
+            <p-fileUpload mode="basic" chooseLabel="Elegir Imagen" chooseIcon="pi pi-upload" name="demo[]"
+                url="https://www.primefaces.org/cdn/api/upload.php" accept="image/*" maxFileSize="1000000"
+                (onUpload)="onUpload($event)" (onError)="onUploadError($event)" (onSelect)="onUploadSelect($event)" />
+            <small *ngIf="uploadError" class="error">Error al subir la imagen. Intenta de nuevo.</small>
+        </div>
+
+        <div class="p-field">
+            <label for="imagenUrl">O ingresa una URL de la imagen:</label>
+            <input id="imagenUrl" type="url" pInputText [(ngModel)]="imagenUrl" name="imagenUrl"
+                placeholder="https://ejemplo.com/imagen.jpg" />
+            <small *ngIf="imagenUrl && !isValidUrl(imagenUrl)" class="error">La URL ingresada no es válida.</small>
+        </div>
+
+        <div class="p-field button-group">
+            <button pButton type="submit" label="Crear noticia" [disabled]="!formValid()"></button>
+            <button pButton class="mt-2" type="button" label="Volver al menú" (click)="irAlMenu()"></button>
+        </div>
+    </form>
+
+</p-card>

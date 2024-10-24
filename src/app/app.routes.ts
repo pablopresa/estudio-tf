@@ -4,16 +4,24 @@ import { NoticiasComponent } from './components/noticias/noticias.component';
 import { ContableComponent } from './components/contable/contable.component';
 import { JuridicaComponent } from './components/juridica/juridica.component';
 import { NgModule } from '@angular/core';
+import { LoginComponent } from './components/login/login.component';
+import { MenuNoticiasComponent } from './components/menu-noticias/menu-noticias.component';
+import { authGuard } from './guards/auth.guard';
+import { RegistroComponent } from './components/registro/registro.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
+    { path: 'admin', component: HomeComponent, canActivate: [authGuard] },
     { path: 'noticias', component: NoticiasComponent },
     { path: 'juridica', component: JuridicaComponent },
-    { path: 'contable', component: ContableComponent }
+    { path: 'contable', component: ContableComponent },
+{ path: 'menu-noticias', component: MenuNoticiasComponent/*, canActivate: [authGuard] */},
+    { path: 'login', component: LoginComponent },
+    { path: 'registro', component: RegistroComponent }
 ];
 
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
     exports: [RouterModule]
-  })
-  export class AppRoutingModule { }
+})
+export class AppRoutingModule { }

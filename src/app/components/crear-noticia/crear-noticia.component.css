@@ -1,0 +1,65 @@
+::ng-deep .card-crear-noticia {
+    width: 35rem;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    margin: 5rem auto;
+}
+
+.p-field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+label {
+    margin-bottom: 0.3rem;
+    font-weight: bold;
+}
+
+.error {
+    color: red;
+    font-size: 0.75em;
+    margin-top: 0.5rem;
+    margin-left: 0.2rem;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    margin-top: 2.5rem;
+}
+
+.button-group button {
+    margin: 0 1rem;
+}
+
+@media (max-width: 768px) {
+    ::ng-deep .card-crear-noticia {
+        width: 100%;
+        margin: 0 auto;
+        padding: 1rem;
+    }
+
+    .p-field {
+        margin-bottom: 1rem;
+    }
+
+    label {
+        font-size: 1rem;
+    }
+
+    input,
+    textarea {
+        font-size: 1rem;
+    }
+
+    .button-group {
+        flex-direction: column;
+        margin-top: 1.5rem;
+    }
+
+    .button-group button {
+        margin: 0.5rem 0;
+        width: 100%;
+    }
+}

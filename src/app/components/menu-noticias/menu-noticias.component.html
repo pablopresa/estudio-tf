@@ -1,0 +1,11 @@
+<div *ngIf="pagina == 'menu'" class="menu-container">
+    <h2>Menú Noticias</h2>
+    <div class="button-group boton-container">
+        <button class="boton-menu" pButton label="Crear Noticia" (click)="crearNoticia()"></button>
+        <button class="boton-menu" pButton label="Gestionar Noticias" (click)="gestionarNoticias()"></button>
+        <button class="boton-menu" pButton label="Volver al inicio" (click)="volverAlInicio()"></button>
+    </div>
+</div>
+
+<app-gestionar-noticias (volver)="volver()" *ngIf="pagina == 'gestionarNoticias'"></app-gestionar-noticias>
+<app-crear-noticia (volver)="volver()" *ngIf="pagina == 'crearNoticia'"></app-crear-noticia>

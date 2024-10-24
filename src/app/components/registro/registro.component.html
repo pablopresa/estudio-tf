@@ -1,0 +1,32 @@
+<p-card styleClass="card-registro" header="Registro">
+    <form (ngSubmit)="registro()" #noticiaForm="ngForm" class="noticia-form">
+        
+        <div class="p-field">
+            <label for="user">Usuario</label>
+            <input id="user" type="text" pInputText [(ngModel)]="user" name="user" required />
+            <small
+                *ngIf="noticiaForm.controls['user']?.invalid && (noticiaForm.controls['user']?.touched || noticiaForm.controls['user']?.dirty)"
+                class="error">
+                El usuario es obligatorio.
+            </small>
+        </div>
+
+        <div class="p-field">
+            <label for="pass">Password</label>
+            <input id="pass" type="text" pInputText [(ngModel)]="pass" name="pass" required />
+            <small
+                *ngIf="noticiaForm.controls['pass']?.invalid && (noticiaForm.controls['pass']?.touched || noticiaForm.controls['pass']?.dirty)"
+                class="error">
+                El password es obligatorio.
+            </small>
+        </div>
+
+        <div class="p-field button-group">
+            <button pButton type="submit" label="Registrarse" [disabled]="!formValid()"></button>
+            <small *ngIf="errorMessage != ''" class="error error-submit">
+                {{errorMessage}}
+            </small>
+        </div>
+    </form>
+
+</p-card>

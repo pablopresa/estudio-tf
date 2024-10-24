@@ -1,0 +1,51 @@
+<h2>Gestión de Noticias</h2>
+
+<div class="news-dashboard">
+  <div *ngFor="let noticia of noticias" class="news-card">
+    <p-card header="{{ noticia.titulo }}" subheader="{{ noticia.fechaString }}">
+      <ng-template pTemplate="header">
+        <img src="{{ noticia.urlImagen }}" alt="{{ noticia.titulo }}" width="80%" />
+      </ng-template>
+
+      <div class="p-field">
+        <p>{{ noticia.descripcion | sliceConPuntos: 110}}</p>
+      </div>
+
+      <div class="button-group">
+        <button pButton type="button" icon="pi pi-pencil" label="Editar" class="p-button-info" (click)="editarNoticia(noticia)"></button>
+        <button pButton type="button" icon="pi pi-trash" label="Eliminar" class="p-button-danger ml-3" (click)="eliminarNoticia(noticia)"></button>
+      </div>
+    </p-card>
+  </div>
+</div>
+
+<div *ngIf="noticias.length == 0">
+  <p-messages [(value)]="mensajeSinNoticias" [enableService]="false" [closable]="false" />
+</div>
+
+<!-- Formulario de edición (Opcional, si prefieres mostrar un formulario al editar) -->
+<div *ngIf="noticiaEditando" class="edit-form">
+  <h3>Editar Noticia</h3>
+  <form (ngSubmit)="guardarEdicion()">
+    <div class="p-field">
+      <label for="titulo">Título</label>
+      <input id="titulo" type="text" pInputText [(ngModel)]="noticiaEditando.titulo" name="titulo" required />
+    </div>
+
+    <div class="p-field">
+      <label for="descripcion">Descripción</label>
+      <textarea id="descripcion" pInputTextarea [(ngModel)]="noticiaEditando.descripcion" name="descripcion" required></textarea>
+    </div>
+
+    <div class="p-field">
+      <label for="urlImagen">URL de la Imagen</label>
+      <input id="urlImagen" type="url" pInputText [(ngModel)]="noticiaEditando.urlImagen" name="urlImagen" required />
+    </div>
+
+    <div class="p-field">
+      <button pButton type="submit" label="Guardar"></button>
+    </div>
+  </form>
+</div>
+
+<button pButton class="boton-volver" type="button" label="Volver al menú" (click)="irAlMenu()"></button>

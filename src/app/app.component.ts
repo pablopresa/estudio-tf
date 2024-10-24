@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { SharedModule } from 'primeng/api';
+import { SharedModules } from './shared.module';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [SharedModule, RouterOutlet],
+  imports: [SharedModules],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

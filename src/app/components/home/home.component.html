@@ -21,7 +21,7 @@
             <div></div>
             <ng-template pTemplate="footer">
                 <div class="button-container flex mt-1">
-                    <p-button class="card-solucion-button" (click)="verSolucion('juridica')" label="Más"
+                    <p-button class="card-solucion-button" (click)="verSolucion('juridica')" label="{{botonMas}}"
                         styleClass="w-full" />
                 </div>
             </ng-template>
@@ -32,15 +32,12 @@
             <div></div>
             <ng-template pTemplate="footer">
                 <div class="button-container flex mt-1">
-                    <p-button class="card-solucion-button" (click)="verSolucion('contable')" label="Más"
+                    <p-button class="card-solucion-button" (click)="verSolucion('contable')" label="{{botonMas}}"
                         styleClass="w-full" />
                 </div>
             </ng-template>
         </p-card>
 
-        <!-- TODO: Pasar a componente -->
-        <app-image-card></app-image-card>
-    
     </div>
 </div>
 
@@ -80,7 +77,7 @@
 
     <div class="card-noticia-container">
         <div *ngFor="let noticia of noticias">
-            <p-card header="{{noticia.titulo}}" styleClass="card-noticia">
+            <p-card header="{{noticia.titulo}}" subheader="{{noticia.fechaString}}" styleClass="card-noticia">
                 <p-image alt="Card" src="{{noticia.urlImagen}}" styleClass="card-noticia-imagen"></p-image>
                 <div></div>
                 <ng-template pTemplate="footer">
@@ -88,7 +85,7 @@
                         {{noticia.descripcion | sliceConPuntos: cantidadLetrasMostradasNoticia}}
                     </p>
                     <div class="button-container flex mt-1">
-                        <p-button class="card-solucion-button" (click)="verNoticia(noticia)" label="Ver más"
+                        <p-button class="card-solucion-button" (click)="verNoticia(noticia)" label="{{botonMas}}"
                             styleClass="w-full" />
                     </div>
                 </ng-template>

@@ -1,0 +1,31 @@
+<p-card styleClass="card-login" header="Login">
+    <form (ngSubmit)="login()" #noticiaForm="ngForm" class="noticia-form">
+
+        <div class="p-field">
+            <label for="user">Usuario</label>
+            <input id="user" type="text" pInputText [(ngModel)]="user" name="user" required />
+            <small
+                *ngIf="noticiaForm.controls['user']?.invalid && (noticiaForm.controls['user']?.touched || noticiaForm.controls['user']?.dirty)"
+                class="error">
+                El usuario es obligatorio.
+            </small>
+        </div>
+
+        <div class="p-field">
+            <label for="pass">Password</label>
+            <input id="pass" type="password" pPassword [(ngModel)]="pass" [feedback]="false" name="pass" required />
+            <small
+                *ngIf="noticiaForm.controls['pass']?.invalid && (noticiaForm.controls['pass']?.touched || noticiaForm.controls['pass']?.dirty)"
+                class="error">
+                El password es obligatorio.
+            </small>
+        </div>
+
+        <div class="p-field button-group">
+            <button pButton type="submit" label="Login" [disabled]="!formValid()"></button>
+            <small *ngIf="errorMessage != ''" class="error error-submit">
+                {{errorMessage}}
+            </small>
+        </div>
+    </form>
+</p-card>
