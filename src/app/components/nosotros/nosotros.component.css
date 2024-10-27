@@ -1,0 +1,118 @@
+.persona-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.presentacion {
+    width: 65%;
+    background-color: white;
+    padding: 0 3%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.foto-img {
+    border-radius: 10px;
+    width: 100%;
+}
+
+
+/* 27 pulgadas */
+@media (max-width: 2200px) {
+
+    .foto {
+        width: 22.5%;
+    }
+
+    .nosotros-container {
+        font-size: 17px;
+        align-items: center;
+        gap: 10px;
+        margin: auto;
+        padding-top: 8.5%;
+        max-width: 85%;
+    }
+}
+
+/* Laptop grande */
+@media (max-width: 1600px) {
+
+    .foto {
+        width: 22.5%;
+    }
+
+    .nosotros-container {
+        font-size: 16px;
+        align-items: center;
+        gap: 10px;
+        padding: 6.5% auto;
+        /* max-width: 85%; */
+    }
+}
+
+/* Laptop mediana */
+@media (max-width: 1440px) {
+
+    .foto {
+        width: 22.5%;
+    }
+
+    .nosotros-container {
+        font-size: 13px;
+        align-items: center;
+        gap: 10px;
+        margin: 5.5% auto;
+        max-width: 85%;
+    }
+}
+
+/* Laptop chica */
+@media (max-width: 1280px) {
+
+    .foto {
+        width: 22.5%;
+    }
+
+    .nosotros-container {
+        font-size: 13px;
+        align-items: center;
+        gap: 10px;
+        margin: 5.5% auto;
+        max-width: 85%;
+    }
+}
+
+/* Tablet */
+@media (max-width: 1000px) {
+
+    .foto {
+        width: 22.5%;
+    }
+
+    .nosotros-container {
+        font-size: 13px;
+        align-items: center;
+        gap: 10px;
+        margin: 5.5% auto;
+        max-width: 85%;
+    }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+
+    .foto {
+        width: 22.5%;
+    }
+
+    .nosotros-container {
+        font-size: 13px;
+        align-items: center;
+        gap: 10px;
+        margin: 5.5% auto;
+        max-width: 85%;
+    }
+}

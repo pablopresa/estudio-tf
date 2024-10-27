@@ -1,98 +1,21 @@
-<p-toolbar [style]="estilosNavbar">
-    <div class="p-toolbar-group-left">
-        <img id="navbar" src="./../assets/logo3.png" alt="Logo" class="ml-6 logo-navbar">
-        <p class="ml-5 tituloEstudio">{{tituloCabezal}}
-        </p>
-    </div>
-
-    <div class="p-toolbar-group-right boton-navbar-container">
-        <ng-container *ngFor="let boton of botones">
-            <p-button class="boton-navbar" label="{{boton.titulo}}" [text]="true" (click)="scrollear(boton.valor, boton.tipo)"
-                size="large"></p-button>
-        </ng-container>
-    </div>
-</p-toolbar>
+<app-navbar [mensajes]="mensajes" [usuario]="usuario" (scroll)="scrollear($event)"
+    *ngIf="mensajes && mensajes.length>0"></app-navbar>
 
 <div class="imagen-fondo-1 largo1Pantalla" id="inicio">
-
-    <div class="card-solucion-container">
-        <p-card styleClass="card-solucion" header="Solución Jurídica" subheader="Dra. Juliana Tassano">
-            <p-image alt="Card" src="../../../assets/juridico1.jpg" styleClass="card-solucion-imagen"></p-image>
-            <div></div>
-            <ng-template pTemplate="footer">
-                <div class="button-container flex mt-1">
-                    <p-button class="card-solucion-button" (click)="verSolucion('juridica')" label="{{botonMas}}"
-                        styleClass="w-full" />
-                </div>
-            </ng-template>
-        </p-card>
-
-        <p-card styleClass="card-solucion" header="Solución Contable" subheader="Cra. Florencia Tassano">
-            <p-image alt="Card" src="../../../assets/estudio-contable.jpg" styleClass="card-solucion-imagen"></p-image>
-            <div></div>
-            <ng-template pTemplate="footer">
-                <div class="button-container flex mt-1">
-                    <p-button class="card-solucion-button" (click)="verSolucion('contable')" label="{{botonMas}}"
-                        styleClass="w-full" />
-                </div>
-            </ng-template>
-        </p-card>
-
-    </div>
+    <app-inicio></app-inicio>
 </div>
 
-<div>
+<div class="frase">
     <p class="frase1"> {{ frase1 }}</p>
     <p class="frase2"> {{ frase2 }}</p>
 </div>
 
-<div class="imagen-fondo-2 largo1Pantalla" id="nosotros">
-
-    <div class="nosotros-container">
-        <!-- Sección Florencia -->
-        <div class="persona-container">
-            <div class="foto">
-                <img src="../../../assets/fotoFlo.jpg" alt="Foto Flo" class="foto-img">
-            </div>
-            <div class="presentacion">
-                <h3>{{tituloFlo}}</h3>
-                <p *ngFor="let parrafo of descripcionFlo">{{parrafo}}</p>
-            </div>
-        </div>
-
-        <!-- Sección Juliana -->
-        <div class="persona-container ">
-            <div class="presentacion">
-                <h3>{{tituloJuli}}</h3>
-                <p *ngFor="let parrafo of descripcionJuli">{{parrafo}}</p>
-            </div>
-            <div class="foto">
-                <img src="../../../assets/fotoJuli.jpg" alt="Foto Juli" class="foto-img">
-            </div>
-        </div>
-    </div>
-
+<div class="imagen-fondo-2 largo1Pantalla" id="nosotros" *ngIf="mensajes && mensajes.length > 0">
+    <app-nosotros [mensajes]="mensajes"></app-nosotros>
 </div>
+
 <div class="imagen-fondo-3 largo1Pantalla" id="noticias">
-
-    <div class="card-noticia-container">
-        <div *ngFor="let noticia of noticias">
-            <p-card header="{{noticia.titulo}}" subheader="{{noticia.fechaString}}" styleClass="card-noticia">
-                <p-image alt="Card" src="{{noticia.urlImagen}}" styleClass="card-noticia-imagen"></p-image>
-                <div></div>
-                <ng-template pTemplate="footer">
-                    <p>
-                        {{noticia.descripcion | sliceConPuntos: cantidadLetrasMostradasNoticia}}
-                    </p>
-                    <div class="button-container flex mt-1">
-                        <p-button class="card-solucion-button" (click)="verNoticia(noticia)" label="{{botonMas}}"
-                            styleClass="w-full" />
-                    </div>
-                </ng-template>
-            </p-card>
-        </div>
-    </div>
-
+    <app-noticias></app-noticias>
 </div>
 
 <div class="imagen-fondo-2 largo1Pantalla">
@@ -104,5 +27,5 @@
 
     <button pButton label="Login" (click)="verSolucion('login')"></button>
     <button pButton label="Registro" (click)="verSolucion('registro')"></button>
-    
+
 </div>

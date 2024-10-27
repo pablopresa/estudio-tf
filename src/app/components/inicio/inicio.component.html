@@ -1,0 +1,24 @@
+<div class="card-solucion-container">
+    <p-card styleClass="card-solucion" header="Solución Jurídica" subheader="Dra. Juliana Tassano">
+        <p-image alt="Card" src="../../../assets/juridico1.jpg" styleClass="card-solucion-imagen"></p-image>
+        <div></div>
+        <ng-template pTemplate="footer">
+            <div class="button-container flex mt-1">
+                <p-button class="card-solucion-button" (click)="verSolucion('juridica')" label="{{botonMas}}"
+                    styleClass="w-full" />
+            </div>
+        </ng-template>
+    </p-card>
+
+    <p-card styleClass="card-solucion" header="Solución Contable" subheader="Cra. Florencia Tassano">
+        <p-image alt="Card" src="../../../assets/estudio-contable.jpg" styleClass="card-solucion-imagen"></p-image>
+        <div></div>
+        <ng-template pTemplate="footer">
+            <div class="button-container flex mt-1">
+                <p-button class="card-solucion-button" (click)="verSolucion('contable')" label="{{botonMas}}"
+                    styleClass="w-full" />
+            </div>
+        </ng-template>
+    </p-card>
+
+</div>

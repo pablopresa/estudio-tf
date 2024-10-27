@@ -1,26 +1,36 @@
 import { Component, OnInit } from '@angular/core';
+import { BaseComponent } from '../base/base.component';
+import { NoticiasService } from '../../services/noticias.service';
 import { Noticia } from '../../model/noticia';
+import { noticiasConf } from '../../resources/configuracion';
+import { SharedModules } from '../../shared.module';
+import { SliceConPuntosPipe } from '../../pipes/slice-con-puntos.pipe';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-noticias',
+  standalone: true,
+  imports: [SharedModules, SliceConPuntosPipe],
   templateUrl: './noticias.component.html',
   styleUrl: './noticias.component.css'
 })
-export class NoticiasComponent implements OnInit {
+export class NoticiasComponent extends BaseComponent implements OnInit {
 
-  constructor() {
+  noticias: Noticia[] = [];
+  cantidadLetrasMostradasNoticia: number = 110;
 
+  constructor(private noticiasService: NoticiasService, private router: Router) {
+    super();
   }
-
-  noticia: Noticia | null = null;
 
   ngOnInit(): void {
-    if (history.state.data != null) {
-      this.noticia = history.state.data as Noticia;
-    }
+    this.cargarDatos(this.noticiasService.obtenerNoticias(noticiasConf.cantidadNoticiasHome), 'noticias').then(
+      (noticias: Noticia[]) => {
+        this.noticias = noticias;
+      });
   }
 
-  volver() {
-    history.back();
+  verNoticia(noticia: Noticia) {
+    this.router.navigate(['noticias'], { state: { data: noticia } });
   }
 }

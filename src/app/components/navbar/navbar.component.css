@@ -1,0 +1,169 @@
+::ng-deep .navbar {
+    background-image: linear-gradient(to right, #e6e6e6, var(--orange-100));
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 40
+}
+
+::ng-deep .p-toolbar-group-right .p-button,
+.tituloEstudio {
+    font-family: 'Trirong', serif;
+    color: #350468;
+    font-weight: lighter;
+}
+
+/* ENCABEZADO */
+
+/* 27 pulgadas */
+@media (max-width: 2200px) {
+
+    ::ng-deep .p-toolbar-group-right .p-button,
+    .tituloEstudio {
+        font-size: 22px;
+    }
+
+    ::ng-deep .boton-navbar-container {
+        width: 48%;
+    }
+
+    .logo-navbar {
+        width: 20%;
+    }
+
+    ::ng-deep .boton-navbar-container {
+        width: 42%;
+        gap: 7px;
+    }
+
+    ::ng-deep .p-button.p-button-lg {
+        padding: 1rem 1.5rem;
+    }
+}
+
+/* Laptop grande */
+@media (max-width: 1600px) {
+
+    ::ng-deep .p-toolbar-group-right .p-button,
+    .tituloEstudio {
+        font-size: 22px;
+    }
+
+    .logo-navbar {
+        width: 20%;
+    }
+
+    ::ng-deep .boton-navbar-container {
+        width: 50%;
+        gap: 25px;
+    }
+
+    ::ng-deep .p-button.p-button-lg {
+        padding: 0.1rem 0.7rem;
+    }
+}
+
+/* Laptop mediana */
+@media (max-width: 1440px) {
+
+    ::ng-deep .p-toolbar-group-right .p-button,
+    .tituloEstudio {
+        font-size: 17px;
+    }
+
+    ::ng-deep .boton-navbar-container {
+        width: 48%;
+    }
+
+    .logo-navbar {
+        width: 19%;
+    }
+
+    ::ng-deep .boton-navbar-container {
+        width: 42%;
+        gap: 0px;
+    }
+
+    ::ng-deep .p-button.p-button-lg {
+        padding: 0.1rem 0.7rem;
+    }
+}
+
+/* Laptop chica */
+@media (max-width: 1280px) {
+
+    ::ng-deep .p-toolbar-group-right .p-button,
+    .tituloEstudio {
+        font-size: 19px;
+    }
+
+    ::ng-deep .boton-navbar-container {
+        width: 48%;
+    }
+
+    .logo-navbar {
+        width: 19%;
+    }
+
+    ::ng-deep .boton-navbar-container {
+        width: 42%;
+        gap: 0px;
+    }
+
+    ::ng-deep .p-button.p-button-lg {
+        padding: 0.1rem 0.7rem;
+    }
+}
+
+/* Tablet */
+@media (max-width: 1000px) {
+
+    ::ng-deep .p-toolbar-group-right .p-button,
+    .tituloEstudio {
+        font-size: 19px;
+    }
+
+    ::ng-deep .boton-navbar-container {
+        width: 48%;
+    }
+
+    .logo-navbar {
+        width: 19%;
+    }
+
+    ::ng-deep .boton-navbar-container {
+        width: 42%;
+        gap: 0px;
+    }
+
+    ::ng-deep .p-button.p-button-lg {
+        padding: 0.1rem 0.7rem;
+    }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+
+    ::ng-deep .p-toolbar-group-right .p-button,
+    .tituloEstudio {
+        font-size: 19px;
+    }
+
+    ::ng-deep .boton-navbar-container {
+        width: 48%;
+    }
+
+    .logo-navbar {
+        width: 19%;
+    }
+
+    ::ng-deep .boton-navbar-container {
+        width: 42%;
+        gap: 0px;
+    }
+
+    ::ng-deep .p-button.p-button-lg {
+        padding: 0.1rem 0.7rem;
+    }
+}

@@ -1,1 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
+.largo1Pantalla {
+    height: 100vh;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+  }

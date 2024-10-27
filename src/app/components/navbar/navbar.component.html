@@ -1,0 +1,14 @@
+<p-toolbar styleClass="navbar">
+    <div class="p-toolbar-group-left">
+        <img id="navbar" src="./../assets/logo3.png" alt="Logo" class="ml-6 logo-navbar">
+        <p class="ml-5 tituloEstudio">{{tituloCabezal}}
+        </p>
+    </div>
+
+    <div class="p-toolbar-group-right boton-navbar-container">
+        <ng-container *ngFor="let boton of botones">
+            <p-button class="boton-navbar" label="{{boton.titulo}}" [text]="true" (click)="scrollear(boton)"
+                size="large"></p-button>
+        </ng-container>
+    </div>
+</p-toolbar>

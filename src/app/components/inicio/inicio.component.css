@@ -1,0 +1,149 @@
+::ng-deep .card-solucion {
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.card-solucion-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
+}
+
+/* 27 pulgadas */
+@media (max-width: 2200px) {
+
+    .card-solucion-container {
+        padding: 18% 0 0 30%;
+    }
+
+    ::ng-deep .card-solucion {
+        width: 18em;
+        height: 21em;
+        margin-right: 5em
+    }
+
+    ::ng-deep .card-solucion .p-card-content {
+        height: 11.4em;
+    }
+
+    ::ng-deep .card-solucion .p-card-content img {
+        width: 16em;
+        height: 11em;
+    }
+}
+
+/* Laptop grande */
+@media (max-width: 1600px) {
+
+    .card-solucion-container {
+        padding: 18% 0 0 25%;
+    }
+
+    ::ng-deep .card-solucion {
+        width: 18em;
+        height: 21em;
+        margin-right: 5em
+    }
+
+    ::ng-deep .card-solucion .p-card-content {
+        height: 11.4em;
+    }
+
+    ::ng-deep .card-solucion .p-card-content img {
+        width: 16em;
+        height: 11em;
+    }
+
+}
+
+/* Laptop mediana */
+@media (max-width: 1440px) {
+
+    .card-solucion-container {
+        padding: 18% 0 0 25%;
+    }
+
+    ::ng-deep .card-solucion {
+        width: 18em;
+        height: 21em;
+        margin-right: 5em
+    }
+
+    ::ng-deep .card-solucion .p-card-content {
+        height: 11.4em;
+    }
+
+    ::ng-deep .card-solucion .p-card-content img {
+        width: 16em;
+        height: 11em;
+    }
+}
+
+/* Laptop chica */
+@media (max-width: 1280px) {
+
+    .card-solucion-container {
+        padding: 18% 0 0 25%;
+    }
+
+    ::ng-deep .card-solucion {
+        width: 18em;
+        height: 21em;
+        margin-right: 5em
+    }
+
+    ::ng-deep .card-solucion .p-card-content {
+        height: 11.4em;
+    }
+
+    ::ng-deep .card-solucion .p-card-content img {
+        width: 16em;
+        height: 11em;
+    }
+}
+
+/* Tablet */
+@media (max-width: 1000px) {
+
+    .card-solucion-container {
+        padding: 18% 0 0 25%;
+    }
+
+    ::ng-deep .card-solucion {
+        width: 18em;
+        height: 21em;
+        margin-right: 5em
+    }
+
+    ::ng-deep .card-solucion .p-card-content {
+        height: 11.4em;
+    }
+
+    ::ng-deep .card-solucion .p-card-content img {
+        width: 16em;
+        height: 11em;
+    }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+
+    .card-solucion-container {
+        padding: 18% 0 0 25%;
+    }
+
+    ::ng-deep .card-solucion {
+        width: 18em;
+        height: 21em;
+        margin-right: 5em
+    }
+
+    ::ng-deep .card-solucion .p-card-content {
+        height: 11.4em;
+    }
+
+    ::ng-deep .card-solucion .p-card-content img {
+        width: 16em;
+        height: 11em;
+    }
+}

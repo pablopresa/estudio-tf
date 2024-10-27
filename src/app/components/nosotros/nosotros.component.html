@@ -1,0 +1,23 @@
+<div class="nosotros-container">
+    <!-- Sección Florencia -->
+    <div class="persona-container">
+        <div class="foto">
+            <img src="../../../assets/fotoFlo.jpg" alt="Foto Flo" class="foto-img">
+        </div>
+        <div class="presentacion">
+            <h3>{{tituloFlo}}</h3>
+            <p *ngFor="let parrafo of descripcionFlo">{{parrafo}}</p>
+        </div>
+    </div>
+
+    <!-- Sección Juliana -->
+    <div class="persona-container ">
+        <div class="presentacion">
+            <h3>{{tituloJuli}}</h3>
+            <p *ngFor="let parrafo of descripcionJuli">{{parrafo}}</p>
+        </div>
+        <div class="foto">
+            <img src="../../../assets/fotoJuli.jpg" alt="Foto Juli" class="foto-img">
+        </div>
+    </div>
+</div>

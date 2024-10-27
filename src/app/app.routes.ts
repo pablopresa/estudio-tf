@@ -1,6 +1,6 @@
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
-import { NoticiasComponent } from './components/noticias/noticias.component';
+import { DetalleNoticiaComponent } from './components/detalle-noticia/detalle-noticia.component';
 import { ContableComponent } from './components/contable/contable.component';
 import { JuridicaComponent } from './components/juridica/juridica.component';
 import { NgModule } from '@angular/core';
@@ -12,10 +12,10 @@ import { RegistroComponent } from './components/registro/registro.component';
 export const routes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'admin', component: HomeComponent, canActivate: [authGuard] },
-    { path: 'noticias', component: NoticiasComponent },
+    { path: 'noticias', component: DetalleNoticiaComponent },
     { path: 'juridica', component: JuridicaComponent },
     { path: 'contable', component: ContableComponent },
-{ path: 'menu-noticias', component: MenuNoticiasComponent/*, canActivate: [authGuard] */},
+    { path: 'menu-noticias', component: MenuNoticiasComponent/*, canActivate: [authGuard] */ },
     { path: 'login', component: LoginComponent },
     { path: 'registro', component: RegistroComponent }
 ];

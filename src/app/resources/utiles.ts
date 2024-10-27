@@ -2,8 +2,9 @@ import { Mensaje } from "../model/mensaje";
 
 export class Utiles {
 
-    public static obtenerMensajes(clave: string, mensajes: Mensaje[]): string[] {
-        return mensajes.filter(x => x.clave.includes(clave)).map(x => x.valor);
+    public static obtenerMensajes(clave: string, mensajes: Mensaje[] | undefined): string[] {
+
+        return (mensajes == undefined) ? [] : mensajes.filter(x => x.clave.includes(clave)).map(x => x.valor);
     }
 
     public static ordenarAscendente(data: any[], campo: string) {
@@ -73,5 +74,5 @@ export class Utiles {
         return !!pattern.test(url);
     }
 
-    
+
 }

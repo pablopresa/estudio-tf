@@ -1,5 +1,17 @@
-<h2>{{noticia?.titulo}}</h2>
-<img src="{{noticia?.urlImagen}}" width="360px">
-<h4>{{noticia?.descripcion}}</h4>
-
-<button pButton (click)="volver()" class="btn btn secondary">Volver</button>
+<div class="card-noticia-container">
+    <div *ngFor="let noticia of noticias">
+        <p-card header="{{noticia.titulo}}" subheader="{{noticia.fechaString}}" styleClass="card-noticia">
+            <p-image alt="Card" src="{{noticia.urlImagen}}" styleClass="card-noticia-imagen"></p-image>
+            <div></div>
+            <ng-template pTemplate="footer">
+                <p>
+                    {{noticia.descripcion | sliceConPuntos: cantidadLetrasMostradasNoticia}}
+                </p>
+                <div class="button-container flex mt-1">
+                    <p-button class="card-solucion-button" (click)="verNoticia(noticia)" label="{{botonMas}}"
+                        styleClass="w-full" />
+                </div>
+            </ng-template>
+        </p-card>
+    </div>
+</div>

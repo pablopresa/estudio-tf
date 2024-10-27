@@ -13,10 +13,15 @@ import { GlobalService } from '../../services/global.service';
 import { noticiasConf } from '../../resources/configuracion';
 import { AuthService } from '../../services/auth.service';
 import { Usuario } from '../../model/usuario';
+import { NavbarComponent } from '../navbar/navbar.component';
+import { InicioComponent } from "../inicio/inicio.component";
+import { Mensaje } from '../../model/mensaje';
+import { NosotrosComponent } from '../nosotros/nosotros.component';
+import { NoticiasComponent } from "../noticias/noticias.component";
 
 @Component({
   standalone: true,
-  imports: [SharedModules, SliceConPuntosPipe], // Incluye HttpClientModule
+  imports: [SharedModules, SliceConPuntosPipe, NavbarComponent, InicioComponent, NosotrosComponent, NoticiasComponent],
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
@@ -35,27 +40,14 @@ export class HomeComponent extends BaseComponent implements OnInit {
   title = Mensajes.TITULO_PANTALLA;
 
   noticias: Noticia[] = [];
+  mensajes: Mensaje[] = [];
 
-  public descripcionEmpresa: string = Mensajes.TEXTO_DESCRIPCION_EMPRESA;
-  public tituloSolucionContable: string = Mensajes.TITULO_SOLUCION_CONTABLE;
-  public tituloSolucionJuridica: string = Mensajes.TITULO_SOLUCION_JURIDICA;
-  public botonMas: string = Mensajes.BOTON_MAS;
-  public tituloSobreNosotros: string = Mensajes.TITULO_SOBRE_NOSOTROS;
-  public tituloPantalla: string = Mensajes.TITULO_PANTALLA;
-  public frase1: string = Mensajes.FRASE_STEVE_JOBS1;
-  public frase2: string = Mensajes.FRASE_STEVE_JOBS2;
-  public sobreNosotros: string = Mensajes.SOBRE_NOSOTROS;
   public estilosNavbar: any;
   public botones: Boton[] = [];
 
   public cantidadLetrasMostradasNoticia: number = 117
 
-  public tituloFlo = '';
-  public descripcionFlo: string[] = [];
-  public tituloJuli = '';
-  public descripcionJuli: string[] = [];
-  public tituloCabezal = '';
-  private usuario: any = null;
+  public usuario: any = null;
 
   constructor(private authService: AuthService, private router: Router, private renderer: Renderer2,
     private elementRef: ElementRef, private noticiasService: NoticiasService,
@@ -65,39 +57,17 @@ export class HomeComponent extends BaseComponent implements OnInit {
 
   ngOnInit(): void {
 
-    if(this.authService.isAuthenticated()){
-      this.usuario = new Usuario('','','','A');
+    if (this.authService.isAuthenticated()) {
+      this.usuario = new Usuario('', '', '', 'A');
     }
-    else{
-      this.usuario = new Usuario('','','','U');
+    else {
+      this.usuario = new Usuario('', '', '', 'U');
     }
-
-    const color1 = '#e6e6e6';
-    const color2 = 'var(--orange-100)';
-    this.estilosNavbar = {
-      'background-image': 'linear-gradient(to right, ' + color1 + ', ' + color2 + ')',
-      'position': 'fixed',
-      'top': 0,
-      'left': 0,
-      'width': '100%',
-      'z-index': 40
-    };
 
     Promise.all([
       this.cargarDatos(this.mensajesService.obtenerMensajes(), 'mensajes'),
-      this.cargarDatos(this.noticiasService.obtenerNoticias(noticiasConf.cantidadNoticiasHome), 'noticias'),
-      this.cargarDatos(this.mensajesService.obtenerBotones(), 'botones')
-    ]).then(([mensajes, noticias, botones]) => {
-
-      this.noticias = noticias;
-      let botonesArray: Boton[] = botones;
-      botonesArray = botonesArray.filter(boton => boton.rol == this.usuario?.rol);
-      this.botones = Utiles.ordenarAscendente(botonesArray, 'orden');
-      this.tituloFlo = Utiles.obtenerMensajes('presentacion-titulo-flo', mensajes)[0];
-      this.descripcionFlo = Utiles.obtenerMensajes('presentacion-descripcion-flo', mensajes);
-      this.tituloJuli = Utiles.obtenerMensajes('presentacion-titulo-juli', mensajes)[0];
-      this.descripcionJuli = Utiles.obtenerMensajes('presentacion-descripcion-juli', mensajes);
-      this.tituloCabezal = Utiles.obtenerMensajes('cabezal-titulo', mensajes)[0];
+    ]).then(([mensajes]) => {
+      this.mensajes = mensajes;
     }).catch((error) => {
       console.error('Error al cargar datos:', error);
     });
@@ -113,7 +83,10 @@ export class HomeComponent extends BaseComponent implements OnInit {
     }
   }
 
-  public scrollear(seccion: string, tipo: string) {
+  public scrollear(boton: Boton) {
+    let seccion = boton.valor;
+    let tipo = boton.tipo;
+
     if (tipo == 'scroll') {
       const element = document.getElementById(seccion);
       const navbar = document.getElementById('navbar');
@@ -124,10 +97,6 @@ export class HomeComponent extends BaseComponent implements OnInit {
     else if (tipo == 'navegacion') {
       this.router.navigate([seccion]);
     }
-  }
-
-  verNoticia(noticia: Noticia) {
-    this.router.navigate(['noticias'], { state: { data: noticia } });
   }
 
   verSolucion(tipo: string) {
