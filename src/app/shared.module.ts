@@ -18,13 +18,24 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { AuthService } from './services/auth.service';
+import { MenuModule } from 'primeng/menu';
 
 @NgModule({
   declarations: [],
-  imports: [RouterOutlet, HttpClientModule],
-  exports: [CommonModule, ButtonModule, RouterOutlet, ToolbarModule, AvatarModule, ImageModule,
-    CardModule, InputTextModule, HttpClientModule, InputTextModule, FormsModule, PasswordModule, FileUploadModule, InputTextareaModule, FloatLabelModule, MessagesModule],
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    HttpClientModule,
+    MenuModule,
+    // NO incluyas BrowserModule
+  ],
+  exports: [
+    CommonModule, ButtonModule, RouterOutlet, ToolbarModule, AvatarModule,
+    ImageModule, CardModule, InputTextModule, HttpClientModule, 
+    FormsModule, PasswordModule, FileUploadModule, InputTextareaModule,
+    FloatLabelModule, MessagesModule, MenuModule,
+    // NO incluyas BrowserModule aquí tampoco
+  ],
   providers: [NoticiasService, MensajesService, UsuarioService, AuthService]
 })
 export class SharedModules { }
-

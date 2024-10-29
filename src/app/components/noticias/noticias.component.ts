@@ -18,13 +18,15 @@ export class NoticiasComponent extends BaseComponent implements OnInit {
 
   noticias: Noticia[] = [];
   cantidadLetrasMostradasNoticia: number = 110;
+  public isMobile: boolean = false;
 
   constructor(private noticiasService: NoticiasService, private router: Router) {
     super();
   }
 
   ngOnInit(): void {
-    this.cargarDatos(this.noticiasService.obtenerNoticias(noticiasConf.cantidadNoticiasHome), 'noticias').then(
+    this.isMobile = window.innerWidth < 1000;
+    this.cargarDatos(this.noticiasService.obtenerNoticias((this.isMobile) ? 2 : noticiasConf.cantidadNoticiasHome), 'noticias').then(
       (noticias: Noticia[]) => {
         this.noticias = noticias;
       });

@@ -1,14 +1,21 @@
 <p-toolbar styleClass="navbar">
     <div class="p-toolbar-group-left">
-        <img id="navbar" src="./../assets/logo3.png" alt="Logo" class="ml-6 logo-navbar">
-        <p class="ml-5 tituloEstudio">{{tituloCabezal}}
-        </p>
+        <img id="navbar" src="./../assets/logo3.png" alt="Logo" class="logo-navbar">
+    </div>
+    
+    <div class="p-toolbar-group-center">
+        <p class="tituloEstudio">{{tituloCabezal}}</p>
     </div>
 
-    <div class="p-toolbar-group-right boton-navbar-container">
+    <div class="p-toolbar-group-right boton-navbar-container" *ngIf="!isMobile">
         <ng-container *ngFor="let boton of botones">
             <p-button class="boton-navbar" label="{{boton.titulo}}" [text]="true" (click)="scrollear(boton)"
                 size="large"></p-button>
         </ng-container>
+    </div>
+
+    <div class="p-toolbar-group-right" *ngIf="isMobile">
+        <p-button icon="pi pi-bars" (click)="menu.toggle($event)"></p-button>
+        <p-menu #menu [popup]="true" [model]="menuItems" appendTo="body"></p-menu>
     </div>
 </p-toolbar>

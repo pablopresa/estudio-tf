@@ -4,10 +4,11 @@ import { SharedModules } from './shared.module';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [SharedModules],
+  imports: [SharedModules],  // Solo SharedModules
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   title = 'estudio-tf';
 }
+

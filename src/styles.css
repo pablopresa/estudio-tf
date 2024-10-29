@@ -1,3 +1,5 @@
+@import "primeicons/primeicons.css";
+
 .largo1Pantalla {
     height: 100vh;
 }
@@ -5,4 +7,4 @@
 .button-container {
     display: flex;
     justify-content: center;
-  }
+}

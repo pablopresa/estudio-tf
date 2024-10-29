@@ -19,8 +19,10 @@ export class NosotrosComponent extends BaseComponent implements OnInit {
   public descripcionFlo: string[] = [];
   public tituloJuli = '';
   public descripcionJuli: string[] = [];
+  public isMobile: boolean = false;
 
   ngOnInit(): void {
+    this.isMobile = window.innerWidth < 1000;
     this.tituloFlo = Utiles.obtenerMensajes('presentacion-titulo-flo', this.mensajes)[0];
     this.descripcionFlo = Utiles.obtenerMensajes('presentacion-descripcion-flo', this.mensajes);
     this.tituloJuli = Utiles.obtenerMensajes('presentacion-titulo-juli', this.mensajes)[0];

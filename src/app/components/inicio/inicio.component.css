@@ -147,3 +147,30 @@
         height: 11em;
     }
 }
+
+@media (max-width: 420px) {
+
+    .card-solucion-container {
+        padding: 120% 0 0 4%;
+        grid-template-columns: repeat(auto-fill, minmax(40%, 1fr));
+    }
+
+    ::ng-deep .card-solucion {
+        width: 10em;
+        height: 15.5em;
+    }
+
+    ::ng-deep .card-solucion .p-card-title {
+        height: 2.5rem;
+        font-size: 18px;
+        text-align: center;
+    }
+    ::ng-deep .card-solucion .p-card-content {
+        height: 6.5rem;
+    }
+
+    ::ng-deep .card-solucion .p-card-content img {
+        width: 7.7em;
+        height: 6em;
+    }
+}

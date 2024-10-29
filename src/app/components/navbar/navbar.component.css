@@ -1,5 +1,5 @@
 ::ng-deep .navbar {
-    background-image: linear-gradient(to right, #e6e6e6, var(--orange-100));
+    background-image: linear-gradient(to right, #e6e6e6, #FFE6CC);
     position: fixed;
     top: 0;
     left: 0;
@@ -13,8 +13,6 @@
     color: #350468;
     font-weight: lighter;
 }
-
-/* ENCABEZADO */
 
 /* 27 pulgadas */
 @media (max-width: 2200px) {
@@ -119,51 +117,114 @@
 /* Tablet */
 @media (max-width: 1000px) {
 
-    ::ng-deep .p-toolbar-group-right .p-button,
-    .tituloEstudio {
-        font-size: 19px;
+    ::ng-deep .p-toolbar {
+        flex-wrap: nowrap;
     }
 
-    ::ng-deep .boton-navbar-container {
-        width: 48%;
+    ::ng-deep .p-toolbar-group-left {
+
+        align-content: left;
+        width: 30%;
     }
 
     .logo-navbar {
-        width: 19%;
+        width: 5rem;
+        height: 4.6rem;
     }
 
-    ::ng-deep .boton-navbar-container {
-        width: 42%;
-        gap: 0px;
+    ::ng-deep .p-toolbar-group-center {
+        width: 100%;
     }
 
-    ::ng-deep .p-button.p-button-lg {
-        padding: 0.1rem 0.7rem;
+    .tituloEstudio {
+        font-size: 18px;
+        font-weight: 600;
     }
+
+    ::ng-deep .p-toolbar-group-right {
+        width: 10%;
+    }
+
+    ::ng-deep .p-toolbar-group-right .p-button {
+        background-color: #FFE6CC;
+        border: 0;
+        font-size: 16px;
+    }
+
 }
 
 /* Tablet */
 @media (max-width: 768px) {
 
-    ::ng-deep .p-toolbar-group-right .p-button,
-    .tituloEstudio {
-        font-size: 19px;
+    ::ng-deep .p-toolbar {
+        flex-wrap: nowrap;
     }
 
-    ::ng-deep .boton-navbar-container {
+    ::ng-deep .p-toolbar-group-left {
+
+        align-content: left;
+        width: 30%;
+    }
+
+    .logo-navbar {
+        width: 5rem;
+        height: 4.6rem;
+    }
+
+    ::ng-deep .p-toolbar-group-center {
+        width: 100%;
+    }
+
+    .tituloEstudio {
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    ::ng-deep .p-toolbar-group-right {
+        width: 10%;
+    }
+
+    ::ng-deep .p-toolbar-group-right .p-button {
+        background-color: #FFE6CC;
+        border: 0;
+        font-size: 16px;
+    }
+
+}
+
+@media (max-width: 420px) {
+
+    ::ng-deep .p-toolbar {
+        flex-wrap: nowrap;
+    }
+
+    ::ng-deep .p-toolbar-group-left {
+        align-content: left;
         width: 48%;
     }
 
     .logo-navbar {
-        width: 19%;
+        width: 5rem;
+        height: 4.6rem;
     }
 
-    ::ng-deep .boton-navbar-container {
-        width: 42%;
-        gap: 0px;
+    ::ng-deep .p-toolbar-group-center {
+        width: 100%;
     }
 
-    ::ng-deep .p-button.p-button-lg {
-        padding: 0.1rem 0.7rem;
+    .tituloEstudio {
+        font-size: 18px;
+        font-weight: 600;
     }
+
+    ::ng-deep .p-toolbar-group-right {
+        width: 10%;
+    }
+
+    ::ng-deep .p-toolbar-group-right .p-button {
+        background-color: #FFE6CC;
+        border: 0;
+        font-size: 16px;
+    }
+
 }

@@ -11,13 +11,22 @@
     </div>
 
     <!-- Sección Juliana -->
-    <div class="persona-container ">
+    <div class="persona-container " *ngIf="!isMobile">
         <div class="presentacion">
             <h3>{{tituloJuli}}</h3>
             <p *ngFor="let parrafo of descripcionJuli">{{parrafo}}</p>
         </div>
         <div class="foto">
             <img src="../../../assets/fotoJuli.jpg" alt="Foto Juli" class="foto-img">
+        </div>
+    </div>
+    <div class="persona-container " *ngIf="isMobile">
+        <div class="foto">
+            <img src="../../../assets/fotoJuli.jpg" alt="Foto Juli" class="foto-img">
+        </div>
+        <div class="presentacion">
+            <h3>{{tituloJuli}}</h3>
+            <p *ngFor="let parrafo of descripcionJuli">{{parrafo}}</p>
         </div>
     </div>
 </div>

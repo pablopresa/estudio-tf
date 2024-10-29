@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
 import { SharedModules } from '../../shared.module';
 import { Boton } from '../../model/boton';
 import { MensajesService } from '../../services/mensajes.service';
@@ -22,9 +22,20 @@ export class NavbarComponent extends BaseComponent implements OnInit {
 
   tituloCabezal: string = '';
   botones: Boton[] = [];
+  isMobile = false;
+  menuItems: any[] = [];
 
   constructor(private mensajesService: MensajesService) {
     super();
+  }
+
+  @HostListener('window:resize', [])
+  onResize() {
+    this.checkScreenSize();
+  }
+
+  checkScreenSize() {
+    this.isMobile = window.innerWidth <= 1000;
   }
 
   ngOnInit(): void {
@@ -34,6 +45,12 @@ export class NavbarComponent extends BaseComponent implements OnInit {
         let botonesArray: Boton[] = botones;
         botonesArray = botonesArray.filter(boton => boton.rol == this.usuario?.rol);
         this.botones = Utiles.ordenarAscendente(botonesArray, 'orden');
+
+        this.checkScreenSize();
+        this.menuItems = this.botones.map(boton => ({
+          label: boton.titulo,
+          command: () => this.scrollear(boton)
+        }));
       })
   }
 

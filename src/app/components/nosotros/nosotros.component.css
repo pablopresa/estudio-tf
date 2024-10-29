@@ -116,3 +116,31 @@
         max-width: 85%;
     }
 }
+
+/* Tablet */
+@media (max-width: 420px) {
+
+    .presentacion {
+        width: 100%;
+    }
+
+    .foto {
+        width: 40%;
+        margin-left: 27%;
+    }
+
+    .persona-container {
+        display: block;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .nosotros-container {
+        font-size: 13px;
+        align-items: center;
+        gap: 1px;
+        margin: 0% auto;
+        max-width: 90%;
+    }
+}
