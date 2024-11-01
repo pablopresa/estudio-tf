@@ -5,115 +5,67 @@
 }
 
 .card-solucion-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
+    display: flex;
+    justify-content: center;
+    gap: 9rem;
+    padding-top: 18%;
+}
+
+::ng-deep .card-solucion {
+    width: 18rem;
+    height: 21rem;
+}
+
+::ng-deep .card-solucion .p-card-content {
+    height: 11.4rem;
+}
+
+::ng-deep .card-solucion .p-card-content img {
+    width: 16rem;
+    height: 11rem;
 }
 
 /* 27 pulgadas */
 @media (max-width: 2200px) {
-
-    .card-solucion-container {
-        padding: 18% 0 0 30%;
-    }
-
-    ::ng-deep .card-solucion {
-        width: 18em;
-        height: 21em;
-        margin-right: 5em
-    }
-
-    ::ng-deep .card-solucion .p-card-content {
-        height: 11.4em;
-    }
-
-    ::ng-deep .card-solucion .p-card-content img {
-        width: 16em;
-        height: 11em;
-    }
 }
 
 /* Laptop grande */
 @media (max-width: 1600px) {
-
-    .card-solucion-container {
-        padding: 18% 0 0 25%;
-    }
-
-    ::ng-deep .card-solucion {
-        width: 18em;
-        height: 21em;
-        margin-right: 5em
-    }
-
-    ::ng-deep .card-solucion .p-card-content {
-        height: 11.4em;
-    }
-
-    ::ng-deep .card-solucion .p-card-content img {
-        width: 16em;
-        height: 11em;
-    }
-
 }
 
 /* Laptop mediana */
 @media (max-width: 1440px) {
-
-    .card-solucion-container {
-        padding: 18% 0 0 25%;
-    }
-
-    ::ng-deep .card-solucion {
-        width: 18em;
-        height: 21em;
-        margin-right: 5em
-    }
-
-    ::ng-deep .card-solucion .p-card-content {
-        height: 11.4em;
-    }
-
-    ::ng-deep .card-solucion .p-card-content img {
-        width: 16em;
-        height: 11em;
-    }
 }
 
 /* Laptop chica */
 @media (max-width: 1280px) {
-
-    .card-solucion-container {
-        padding: 18% 0 0 25%;
+    
+    ::ng-deep .card-solucion {
+        width: 13em;
+        height: 15.5em;
     }
 
-    ::ng-deep .card-solucion {
-        width: 18em;
-        height: 21em;
-        margin-right: 5em
+    ::ng-deep .card-solucion .p-card-title {
+        height: 1rem;
+        font-size: 18px;
+    }
+    ::ng-deep .card-solucion .p-card-subtitle {
+        font-size: 12px;
+        height: 0.5rem;
     }
 
     ::ng-deep .card-solucion .p-card-content {
-        height: 11.4em;
+        height: 7rem;
     }
 
     ::ng-deep .card-solucion .p-card-content img {
-        width: 16em;
-        height: 11em;
+        width: 10.5rem;
+        height: 6.5em;
     }
 }
 
 /* Tablet */
 @media (max-width: 1000px) {
-
-    .card-solucion-container {
-        padding: 18% 0 0 25%;
-    }
-
-    ::ng-deep .card-solucion {
-        width: 18em;
-        height: 21em;
-        margin-right: 5em
-    }
 
     ::ng-deep .card-solucion .p-card-content {
         height: 11.4em;
@@ -127,32 +79,13 @@
 
 /* Tablet */
 @media (max-width: 768px) {
-
-    .card-solucion-container {
-        padding: 18% 0 0 25%;
-    }
-
-    ::ng-deep .card-solucion {
-        width: 18em;
-        height: 21em;
-        margin-right: 5em
-    }
-
-    ::ng-deep .card-solucion .p-card-content {
-        height: 11.4em;
-    }
-
-    ::ng-deep .card-solucion .p-card-content img {
-        width: 16em;
-        height: 11em;
-    }
 }
 
 @media (max-width: 420px) {
 
     .card-solucion-container {
-        padding: 120% 0 0 4%;
-        grid-template-columns: repeat(auto-fill, minmax(40%, 1fr));
+        gap: 1.5rem;
+        padding-top: 120%;
     }
 
     ::ng-deep .card-solucion {
@@ -165,6 +98,7 @@
         font-size: 18px;
         text-align: center;
     }
+
     ::ng-deep .card-solucion .p-card-content {
         height: 6.5rem;
     }

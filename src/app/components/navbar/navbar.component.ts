@@ -23,7 +23,7 @@ export class NavbarComponent extends BaseComponent implements OnInit {
   tituloCabezal: string = '';
   botones: Boton[] = [];
   isMobile = false;
-  menuItems: any[] = [];
+  botonesMenu: any[] = [];
 
   constructor(private mensajesService: MensajesService) {
     super();
@@ -35,7 +35,7 @@ export class NavbarComponent extends BaseComponent implements OnInit {
   }
 
   checkScreenSize() {
-    this.isMobile = window.innerWidth <= 1000;
+    this.isMobile = window.innerWidth <= 1080;
   }
 
   ngOnInit(): void {
@@ -47,7 +47,7 @@ export class NavbarComponent extends BaseComponent implements OnInit {
         this.botones = Utiles.ordenarAscendente(botonesArray, 'orden');
 
         this.checkScreenSize();
-        this.menuItems = this.botones.map(boton => ({
+        this.botonesMenu = this.botones.map(boton => ({
           label: boton.titulo,
           command: () => this.scrollear(boton)
         }));

@@ -11,220 +11,63 @@
 .tituloEstudio {
     font-family: 'Trirong', serif;
     color: #350468;
-    font-weight: lighter;
+    font-weight: 600;
+    font-size: 22px;
 }
 
-/* 27 pulgadas */
-@media (max-width: 2200px) {
-
-    ::ng-deep .p-toolbar-group-right .p-button,
-    .tituloEstudio {
-        font-size: 22px;
-    }
-
-    ::ng-deep .boton-navbar-container {
-        width: 48%;
-    }
-
-    .logo-navbar {
-        width: 20%;
-    }
-
-    ::ng-deep .boton-navbar-container {
-        width: 42%;
-        gap: 7px;
-    }
-
-    ::ng-deep .p-button.p-button-lg {
-        padding: 1rem 1.5rem;
-    }
+::ng-deep .p-toolbar {
+    flex-wrap: nowrap;
 }
 
-/* Laptop grande */
-@media (max-width: 1600px) {
+::ng-deep .p-toolbar-group-left {
+    align-content: left;
+    width: 10%;
+    padding-left: 2rem;
+}
 
-    ::ng-deep .p-toolbar-group-right .p-button,
-    .tituloEstudio {
-        font-size: 22px;
-    }
+::ng-deep .p-toolbar-group-center {
+    width: 100%;
+    align-items: left;
+    padding-left: 4rem;
+}
 
-    .logo-navbar {
-        width: 20%;
-    }
-
-    ::ng-deep .boton-navbar-container {
-        width: 50%;
-        gap: 25px;
-    }
-
-    ::ng-deep .p-button.p-button-lg {
-        padding: 0.1rem 0.7rem;
-    }
+.logo-navbar {
+    width: 5rem;
+    height: 4.5rem;
 }
 
 /* Laptop mediana */
 @media (max-width: 1440px) {
-
     ::ng-deep .p-toolbar-group-right .p-button,
     .tituloEstudio {
-        font-size: 17px;
-    }
-
-    ::ng-deep .boton-navbar-container {
-        width: 48%;
-    }
-
-    .logo-navbar {
-        width: 19%;
-    }
-
-    ::ng-deep .boton-navbar-container {
-        width: 42%;
-        gap: 0px;
-    }
-
-    ::ng-deep .p-button.p-button-lg {
-        padding: 0.1rem 0.7rem;
-    }
-}
-
-/* Laptop chica */
-@media (max-width: 1280px) {
-
-    ::ng-deep .p-toolbar-group-right .p-button,
-    .tituloEstudio {
-        font-size: 19px;
-    }
-
-    ::ng-deep .boton-navbar-container {
-        width: 48%;
-    }
-
-    .logo-navbar {
-        width: 19%;
-    }
-
-    ::ng-deep .boton-navbar-container {
-        width: 42%;
-        gap: 0px;
-    }
-
-    ::ng-deep .p-button.p-button-lg {
-        padding: 0.1rem 0.7rem;
+        font-size: 18px;
     }
 }
 
 /* Tablet */
-@media (max-width: 1000px) {
-
-    ::ng-deep .p-toolbar {
-        flex-wrap: nowrap;
-    }
-
-    ::ng-deep .p-toolbar-group-left {
-
-        align-content: left;
-        width: 30%;
-    }
-
-    .logo-navbar {
-        width: 5rem;
-        height: 4.6rem;
-    }
-
-    ::ng-deep .p-toolbar-group-center {
-        width: 100%;
-    }
-
-    .tituloEstudio {
-        font-size: 18px;
-        font-weight: 600;
-    }
-
-    ::ng-deep .p-toolbar-group-right {
-        width: 10%;
-    }
-
+@media (max-width: 1080px) {
+    /* Menú hamburguesa */
     ::ng-deep .p-toolbar-group-right .p-button {
         background-color: #FFE6CC;
         border: 0;
-        font-size: 16px;
     }
-
 }
 
 /* Tablet */
 @media (max-width: 768px) {
-
-    ::ng-deep .p-toolbar {
-        flex-wrap: nowrap;
-    }
-
     ::ng-deep .p-toolbar-group-left {
-
-        align-content: left;
-        width: 30%;
+        padding-left: 0.5rem;
     }
-
-    .logo-navbar {
-        width: 5rem;
-        height: 4.6rem;
-    }
-
-    ::ng-deep .p-toolbar-group-center {
-        width: 100%;
-    }
-
-    .tituloEstudio {
-        font-size: 18px;
-        font-weight: 600;
-    }
-
-    ::ng-deep .p-toolbar-group-right {
-        width: 10%;
-    }
-
-    ::ng-deep .p-toolbar-group-right .p-button {
-        background-color: #FFE6CC;
-        border: 0;
-        font-size: 16px;
-    }
-
 }
 
 @media (max-width: 420px) {
-
-    ::ng-deep .p-toolbar {
-        flex-wrap: nowrap;
-    }
-
-    ::ng-deep .p-toolbar-group-left {
-        align-content: left;
-        width: 48%;
-    }
-
-    .logo-navbar {
-        width: 5rem;
-        height: 4.6rem;
-    }
-
-    ::ng-deep .p-toolbar-group-center {
-        width: 100%;
-    }
-
     .tituloEstudio {
-        font-size: 18px;
-        font-weight: 600;
+        font-size: 15px;
     }
+}
 
-    ::ng-deep .p-toolbar-group-right {
-        width: 10%;
+@media (max-width: 340px) {
+    .tituloEstudio {
+        font-size: 13px;
     }
-
-    ::ng-deep .p-toolbar-group-right .p-button {
-        background-color: #FFE6CC;
-        border: 0;
-        font-size: 16px;
-    }
-
 }

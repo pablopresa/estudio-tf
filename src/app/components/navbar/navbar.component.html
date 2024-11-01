@@ -16,6 +16,6 @@
 
     <div class="p-toolbar-group-right" *ngIf="isMobile">
         <p-button icon="pi pi-bars" (click)="menu.toggle($event)"></p-button>
-        <p-menu #menu [popup]="true" [model]="menuItems" appendTo="body"></p-menu>
+        <p-menu #menu [popup]="true" [model]="botonesMenu" appendTo="body"></p-menu>
     </div>
 </p-toolbar>
